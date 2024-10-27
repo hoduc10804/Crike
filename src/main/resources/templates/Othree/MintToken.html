@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mint Token</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-lg py-5">
+        <h1 class="text-center">Mint Token</h1>
+        <table class="table">
+            <tr>
+                <td class="p-2">
+                    Network<br/>
+                    <small>Solana blockchain environment (testnet/devnet/mainnet-beta)</small>
+                </td>
+                <td>
+                    <select id="network" class="form-select">
+                        <option value="devnet">Devnet</option>
+                        <option value="testnet">Testnet</option>
+                        <option value="mainnet-beta">Mainnet Beta</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="p-2 w-25">
+                    Private Key<br/>
+                    <small style="margin-left: -7px;">Wallet Address of the person who has mint authority</small>
+                </td>
+                <td class="pt-3">
+                    <input type="text" id="privKey" class="form-control" placeholder="Enter Private Key"/>
+                    <small class="text-danger" id="privErr"></small>
+                </td>
+            </tr>
+            <tr>
+                <td class="p-2">
+                    Receiver Address<br/>
+                    <small style="margin-left: -7px;">Who will receive the units</small>
+                </td>
+                <td class="pt-3">
+                    <input type="text" id="rcvr" class="form-control" placeholder="Receiver's Public key"/>
+                    <small class="text-danger" id="rcvrErr"></small>
+                </td>
+            </tr>
+            <tr>
+                <td class="p-2">
+                    Token Address<br/>
+                    <small style="margin-left: -7px;">Address of the minted token</small>
+                </td>
+                <td class="pt-3">
+                    <input type="text" id="tknAddr" class="form-control" placeholder="Token Address"/>
+                    <small class="text-danger" id="tknError"></small>
+                </td>
+            </tr>
+            <tr>
+                <td class="p-2">
+                    Amount<br/>
+                    <small style="margin-left: -7px;">Amount of Token to be transferred</small>
+                </td>
+                <td class="pt-3">
+                    <input type="number" id="amt" class="form-control" placeholder="Units to be transferred"/>
+                    <small class="text-danger" id="amtErr"></small>
+                </td>
+            </tr>
+        </table>
+        <div class="text-center">
+            <button class="btn btn-success" onclick="handleRequest()">Mint Token</button>
+        </div>
+        <div class="py-4">
+            <h6 class="text-center text-danger">Status: <span id="requestStatus">Awaiting Details</span></h6>
+            <h4 class="text-center text-info">Server Response</h4>
+            <textarea id="serResp" class="form-control" rows="10"></textarea>
+        </div>
+    </div>
+
+    <script>
+        const xApiKey = "0ZZi5a0Eo89-knJM"; // Đặt API Key của bạn ở đây
+
+        function handleRequest() {
+            const network = document.getElementById('network').value;
+            const privKey = document.getElementById('privKey').value;
+            const rcvr = document.getElementById('rcvr').value;
+            const tknAddr = document.getElementById('tknAddr').value;
+            const amt = document.getElementById('amt').value;
+
+            document.getElementById('requestStatus').textContent = "In Progress";
+
+            fetch("https://api.shyft.to/sol/v1/token/mint", {
+                method: "POST",
+                headers: {
+                    "x-api-key": xApiKey,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    network: network,
+                    private_key: privKey,
+                    receiver: rcvr,
+                    token_address: tknAddr,
+                    amount: Number(amt)
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('serResp').value = JSON.stringify(data, null, 2);
+                document.getElementById('requestStatus').textContent = data.success ? "Success" : "Failed";
+            })
+            .catch(error => {
+                console.error(error);
+                document.getElementById('serResp').value = `Error: ${error}`;
+                document.getElementById('requestStatus').textContent = "Failed";
+            });
+        }
+    </script>
+</body>
+</html>

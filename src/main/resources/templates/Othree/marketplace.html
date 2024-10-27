@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace=~{layout/head}></head>
+<style>
+    .card {
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    /* Thêm CSS cho khung viền trắng */
+    .bordered-img {
+        border: 5px solid white; /* Viền trắng */
+        padding: 5px; /* Khoảng cách giữa ảnh và viền */
+        border-radius: 5px; /* Bo góc cho viền */
+        background-color: #f8f9fa; /* Màu nền cho khung viền */
+    }
+
+    /* CSS cho ảnh trong thẻ card */
+    .card-img-top {
+        height: 200px; /* Chiều cao cố định */
+        object-fit: cover; /* Cắt ảnh để giữ tỉ lệ mà không bị biến dạng */
+    }
+</style>
+
+<body>
+<div th:replace=~{layout/header}></div>
+
+<!-- Header Start -->
+<div class="container-fluid hero-header py-5 mb-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 mb-3 animated slideInDown">Giày bóng đá</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <!--
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">NFT Marketplace</li>
+                    </ol>
+                    -->
+                </nav>
+            </div>
+            <div class="col-lg-6 animated fadeIn">
+                <div class="bordered-img">
+                    <!-- Khung viền trắng cho ảnh -->
+                    <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="img/img-2-1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<div class="container">
+    <div class="row g-3" id="nft-container">
+        <!-- Danh sách sản phẩm giày bóng đá -->
+        <div class="row g-3">
+            <!-- Sản phẩm 1 -->
+            <div class="col-md-4">
+                <div class="card bg-dark text-white">
+                    <img src="img/giày 1.jpg" class="card-img-top" alt="Shoe 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Giày bóng đá 1</h5>
+                        <p class="card-price">Giá: 80 USD</p>
+                        <div>
+                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="#" class="btn btn-primary">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 2 -->
+            <div class="col-md-4">
+                <div class="card bg-dark text-white">
+                    <img src="img/giày 2.jpg" class="card-img-top" alt="Shoe 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Giày bóng đá 2</h5>
+                        <p class="card-price">Giá: 90 USD</p>
+                        <div>
+                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="#" class="btn btn-primary">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 3 -->
+            <div class="col-md-4">
+                <div class="card bg-dark text-white">
+                    <img src="img/giày 3.jpg" class="card-img-top" alt="Shoe 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Giày bóng đá 3</h5>
+                        <p class="card-price">Giá: 85 USD</p>
+                        <div>
+                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="#" class="btn btn-primary">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 4 -->
+            <div class="col-md-4">
+                <div class="card bg-dark text-white">
+                    <img src="img/giày 4.jpg" class="card-img-top" alt="Shoe 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Giày bóng đá 4</h5>
+                        <p class="card-price">Giá: 95 USD</p>
+                        <div>
+                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="#" class="btn btn-primary">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 5 -->
+            <div class="col-md-4">
+                <div class="card bg-dark text-white">
+                    <img src="img/giày 5.jpg" class="card-img-top" alt="Shoe 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Giày bóng đá 5</h5>
+                        <p class="card-price">Giá: 75 USD</p>
+                        <div>
+                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="#" class="btn btn-primary">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 6 -->
+            <div class="col-md-4">
+                <div class="card bg-dark text-white">
+                    <img src="img/giày 6.jpg" class="card-img-top" alt="Shoe 6">
+                    <div class="card-body">
+                        <h5 class="card-title">Giày bóng đá 6</h5>
+                        <p class="card-price">Giá: 100 USD</p>
+                        <div>
+                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="#" class="btn btn-primary">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace=~{layout/footer}></div>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- js vi -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/marketplace.js"></script>
+</body>
+
+</html>

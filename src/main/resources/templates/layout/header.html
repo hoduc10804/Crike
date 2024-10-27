@@ -1,0 +1,48 @@
+<!-- Spinner Start -->
+    <div id="spinner" xmlns:th="http://www.thymeleaf.org"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top p-0 px-4 px-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <h2 class="m-0 text-warning"><img class="img-fluid" src="img/vietnam_sport_club_logo_no_bg.png" alt=""
+                    style="width: 80px;">VietNam Sportclub</h2>
+        </a>
+        <button type="button" class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-4 py-lg-0 ">
+                <a href="/index" class="nav-item nav-link text-white">Trang chủ</a>
+                <a href="/about" class="nav-item nav-link text-white">Về chúng tôi</a>
+                <a href="/service" class="nav-item nav-link text-white">Dịch vụ</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle  text-white" data-bs-toggle="dropdown">Mặt hàng</a>
+                    <div class="dropdown-menu shadow-sm m-0 bg-dark">
+                        <a href="/marketplace" class="dropdown-item  text-white">Giày bóng đá</a>
+                        <a href="/myNFTs" class="dropdown-item  text-white">Quần áo bóng đá</a>
+                        <a href="/createNFT" class="dropdown-item text-white">Phụ kiện bóng đá</a>
+                        <a href="/transfer" class="dropdown-item text-white">Đặt lịch trị liệu</a>
+                        <a href="/transferSOL" class="dropdown-item text-white">Liệu trình dinh dưỡng</a>
+                    </div>
+                </div>
+                <a href="/contact" class="nav-item nav-link text-white">Liên lạc chúng tôi</a>
+                 <a href="/login" class="nav-item nav-link text-white">Đăng nhập</a>
+            </div>
+            <div class="h-100 d-lg-inline-flex align-items-center d-none">
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="https://www.facebook.com/hoduc1084"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i
+                        class="fab fa-twitter"></i></a>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i
+                        class="fab fa-linkedin-in"></i></a>
+            </div>
+                 <!--   <button class="btn btn-warning btn" id="walletButton" onclick="connectAndSignButtonClicked()">Connect Wallet</button> -->
+        </div>
+    </nav>
+    <!-- Navbar End -->
+        <script th:src="@{/js/connectWallet.js}"></script>

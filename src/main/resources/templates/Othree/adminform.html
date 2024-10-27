@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/head}"></head>
+<title>Insert title here</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="admin/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/admin/css/style.css" rel="stylesheet">
+<style>
+main {
+	background-color: black 
+	padding: 20px;
+	border-radius: 5px;
+}
+</style>
+</head>
+<body class="bg-dark">
+	<div th:replace="~{layout/header}"></div>
+
+	<main class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3 col-md-4 bg-dark p-3">
+				<ul class="nav flex-column" id="sidebar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						href="/accounts"> <i class="bi bi-person"></i> <span>Account</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/customers">
+							<i class="bi bi-person"></i> <span>Customer</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/comments"> <i
+							class="bi bi-chat-dots"></i> <span>Comments</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/images"> <i
+							class="bi bi-box-seam"></i> <span>ImagesNFT</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"> <i
+							class="bi bi-shield-lock"></i> <span>Authorize</span>
+					</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-9 col-md-8 p-3">
+				<div class="content">
+					<h1 class="mb-4">Welcome</h1>
+					<p>This is the main content area. Replace this with your actual
+						content.</p>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<div th:replace="~{layout/footer}"></div>
+	<a href="#"
+		class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
+		<i class="bi bi-arrow-up"></i>
+	</a>
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="lib/wow/wow.min.js"></script>
+	<script src="lib/easing/easing.min.js"></script>
+	<script src="lib/waypoints/waypoints.min.js"></script>
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="lib/counterup/counterup.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bs58/4.0.1/bs58.min.js"></script>
+	<!-- Template Javascript -->
+	<script src="js/main.js"></script>
+</body>
+</html>

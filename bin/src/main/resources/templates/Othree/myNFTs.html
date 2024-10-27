@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace=~{layout/head}></head>
+
+<body>
+    <div th:replace=~{layout/header}></div>
+
+    <!-- Header Start -->
+    <div class="container-fluid hero-header py-5 mb-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 mb-3 animated slideInDown">Roadmap</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Roadmap</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 animated fadeIn">
+                    <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="img/hero-2.png"
+                        alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+	
+	            <div class="col-md-12" id="connectMessage">
+                <div class="alert alert-warning text-center" role="alert">
+                    Please connect your wallet for list your NFTs.
+                </div>
+            </div>
+        <div id="formContainer" class="card hidden container bg-dark text-center" style="display: none;">
+            <form id="nft-form" class="bg-dark row">
+            <div class="col-auto">
+                <label for="network" class="text-light">Network</label>
+                </div>
+                <div class="col-auto">
+                <select id="network" name="network" class="form-select">
+                    <option value="devnet">Devnet</option>
+                    <option value="testnet">Testnet</option>
+                    <option value="mainnet-beta">Mainnet Beta</option>
+                </select>
+                </div>
+                <div class="col-auto">
+                <input type="text" id="wallet-id" class="form-control" placeholder="Enter Wallet ID" readonly>
+                </div>
+                <div class="col-auto">
+                <button type="submit" class="btn btn-warning">Get NFTs</button>
+                </div>
+            </form>
+        </div>
+        <div id="nft-section" class="cards-section hidden"></div>
+    </div>
+
+    <!-- Roadmap Start 
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6">Roadmap</h1>
+                <p class="text-primary fs-5 mb-5">We Translate Your Dream Into Reality</p>
+            </div>
+            <div class="owl-carousel roadmap-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="roadmap-item">
+                    <div class="roadmap-point"><span></span></div>
+                    <h5>January 2045</h5>
+                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-point"><span></span></div>
+                    <h5>March 2045</h5>
+                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-point"><span></span></div>
+                    <h5>May 2045</h5>
+                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-point"><span></span></div>
+                    <h5>July 2045</h5>
+                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-point"><span></span></div>
+                    <h5>September 2045</h5>
+                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-point"><span></span></div>
+                    <h5>November 2045</h5>
+                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
+                </div>
+            </div>
+        </div>
+    </div>
+     Roadmap End -->
+
+
+    <div th:replace=~{layout/footer}></div>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js.myNFTs.js"></script>
+</body>
+
+</html>

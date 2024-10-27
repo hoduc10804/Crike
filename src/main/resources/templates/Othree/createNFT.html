@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layout/head"></head>
+
+<body>
+<div th:replace="layout/header"></div>
+
+<!-- Header Start -->
+<div class="container-fluid hero-header py-5 mb-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 mb-3 animated slideInDown">Phụ kiện bóng đá</h1>
+            </div>
+            <div class="col-lg-6 animated fadeIn">
+                <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="img/phụ kiện.png" alt="Quần áo bóng đá">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Products Section Start -->
+<div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-6">Phụ kiện bóng đá</h1>
+            <p class="text-primary fs-5 mb-5">Chất lượng hàng đầu - Thiết kế đẳng cấp</p>
+        </div>
+        <div class="row g-4">
+            <!-- Product 1 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="product-item bg-dark p-4 text-center rounded">
+                    <img class="img-fluid mb-4 product-image" src="img/băng quấn cổ tay.jpg" alt="Băng quấn cổ tay">
+                    <h5 class="mb-3 text-light">Băng quấn cổ tay</h5>
+                    <p class="text-muted">Giá: 500,000 VND</p>
+                    <input type="number" value="1" min="1" class="quantity-input" id="quantity1">
+                    <a href="#" class="btn btn-primary" onclick="addToCart('Băng quấn cổ tay', 500000, document.getElementById('quantity1').value)">Mua ngay <i class="fa fa-shopping-cart ms-2"></i></a>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="product-item bg-dark p-4 text-center rounded">
+                    <img class="img-fluid mb-4 product-image" src="img/bọc ống đồng.jpg" alt="Bọc ống đồng">
+                    <h5 class="mb-3 text-light">Miếng bọc bảo vệ ống đồng</h5>
+                    <p class="text-muted">Giá: 450,000 VND</p>
+                    <input type="number" value="1" min="1" class="quantity-input" id="quantity2">
+                    <a href="#" class="btn btn-primary" onclick="addToCart('Miếng bọc bảo vệ ống đồng', 450000, document.getElementById('quantity2').value)">Mua ngay <i class="fa fa-shopping-cart ms-2"></i></a>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="product-item bg-dark p-4 text-center rounded">
+                    <img class="img-fluid mb-4 product-image" src="img/găng tay.jpg" alt="Găng tay">
+                    <h5 class="mb-3 text-light">Găng tay thủ môn</h5>
+                    <p class="text-muted">Giá: 4,550,000 VND</p>
+                    <input type="number" value="1" min="1" class="quantity-input" id="quantity3">
+                    <a href="#" class="btn btn-primary" onclick="addToCart('Găng tay thủ môn', 550000, document.getElementById('quantity3').value)">Mua ngay <i class="fa fa-shopping-cart ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Products Section End -->
+
+<!-- Shopping Cart Section Start -->
+<div class="container py-5" id="shopping-cart">
+    <h2 class="text-light">Giỏ hàng của bạn</h2>
+    <table class="table table-dark mt-4">
+        <thead>
+        <tr>
+            <th scope="col">Sản phẩm</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Tổng</th>
+            <th scope="col">Hành động</th>
+        </tr>
+        </thead>
+        <tbody id="cartItems"></tbody>
+    </table>
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <h3 class="text-light">Tổng cộng: <span id="totalAmount">0 VND</span></h3>
+        <a href="#" class="btn btn-success" id="checkoutButton" style="display:none;" onclick="checkout()">Thanh toán</a>
+    </div>
+</div>
+<!-- Shopping Cart Section End -->
+
+<div th:replace="layout/footer"></div>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+
+<!-- Custom JavaScript for Cart -->
+<script>
+    let cart = [];
+    let totalAmount = 0;
+
+    function addToCart(productName, price, quantity) {
+        quantity = parseInt(quantity);
+        const itemTotal = price * quantity;
+
+        // Check if the item is already in the cart
+        const existingItemIndex = cart.findIndex(item => item.name === productName);
+        if (existingItemIndex > -1) {
+            // If item exists, update the quantity
+            cart[existingItemIndex].quantity += quantity;
+            cart[existingItemIndex].total += itemTotal;
+        } else {
+            // If new item, add to cart
+            cart.push({ name: productName, price: price, quantity: quantity, total: itemTotal });
+        }
+
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItems = document.getElementById('cartItems');
+        cartItems.innerHTML = ''; // Clear existing items
+        totalAmount = 0; // Reset total amount
+
+        cart.forEach(item => {
+            totalAmount += item.total; // Add to total amount
+            cartItems.innerHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.price.toLocaleString()} VND</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.total.toLocaleString()} VND</td>
+                        <td><button class="btn btn-danger" onclick="removeFromCart('${item.name}')">Xóa</button></td>
+                    </tr>
+                `;
+        });
+
+        document.getElementById('totalAmount').innerText = totalAmount.toLocaleString() + ' VND';
+        document.getElementById('checkoutButton').style.display = totalAmount > 0 ? 'block' : 'none'; // Show checkout button if cart is not empty
+    }
+
+    function removeFromCart(productName) {
+        cart = cart.filter(item => item.name !== productName); // Remove item from cart
+        updateCart();
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Giỏ hàng của bạn đang trống!');
+        } else {
+            alert('Cảm ơn bạn đã thanh toán. Tổng số tiền là: ' + totalAmount.toLocaleString() + ' VND');
+            // Reset cart
+            cart = [];
+            updateCart();
+        }
+    }
+</script>
+
+<!-- Custom CSS -->
+<style>
+    .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .product-item {
+        transition: transform 0.3s ease;
+    }
+
+    .product-item:hover {
+        transform: translateY(-10px);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    /* Shopping Cart Styles */
+    #shopping-cart {
+        background-color: #343a40;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .table-dark {
+        color: #ffffff;
+    }
+
+    .table-dark th {
+        background-color: #495057;
+    }
+
+    .quantity-input {
+        width: 60px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>
+</body>
+
+</html>

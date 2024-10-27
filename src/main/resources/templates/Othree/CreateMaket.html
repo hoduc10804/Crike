@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Mua NFT</title>
+    <script>
+        function buyNft() {
+            var myHeaders = new Headers();
+            myHeaders.append("x-api-key", "hmwMl_TgYEitVNxT");
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "network": "devnet",
+                "transaction_fee": 1,
+                "creator_wallet": "your wallet address"
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch("https://api.shyft.to/sol/v1/marketplace/create", requestOptions)
+                .then(response => response.text())
+                .then(result => console.table(result))
+                .catch(error => console.log('error', error));
+        }
+        function buyNft2() {
+            var myHeaders = new Headers();
+            myHeaders.append("x-api-key", "hmwMl_TgYEitVNxT");
+
+
+
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+
+                redirect: 'follow'
+            };
+
+            fetch("https://api.shyft.to/sol/v1/marketplace/active_listings?network=devnet&marketplace_address=B4onhZgF5DZnEtpvjaXSz2CwFv5ADkEmPqwpmeLxU1sA", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+
+        function findmarket() {
+            var myHeaders = new Headers();
+            myHeaders.append("x-api-key", "hmwMl_TgYEitVNxT");
+
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch("https://api.shyft.to/sol/v1/marketplace/my_markets?network=devnet", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+
+
+      
+    </script>
+
+
+</head>
+
+<body>
+    <h1>Mua NFT</h1>
+    <button onclick="buyNft()">Mua NFT</button>
+    <button onclick="findmarket()">Tìm chợ</button>
+    
+  
+</body>
+
+</html>

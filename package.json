@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@shyft-to/js": "^0.2.40",
+    "@solana/spl-token": "^0.4.8",
+    "@solana/web3.js": "^1.95.2",
+    "buffer": "^6.0.3"
+  }
+}
